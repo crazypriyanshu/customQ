@@ -229,4 +229,83 @@ public class LinkedList {
         }
         return head;
     }
+
+    public static void insertNodeAtPosition(int position, int value) {
+        if(position > getLength(head)) {
+            System.out.println(" position is greater than the length of linked list, so can't insert at this position");
+        }
+        Node nn = new Node(value);
+        Node temp = head;
+
+        if(position == 1) {
+            nn.next = head;
+            head = nn;
+        } else {
+            for (int i =1; i< position-1; i++) {
+                temp = temp.next;
+                // reached till the position value
+            }
+            // add the node here\
+            nn.next = temp.next;
+            temp.next = nn;
+        }
+    }
+
+    public static void deleteANodeAtPosition(int position) {
+        if(position > getLength(head)) {
+            System.out.println(" position is greater than the length of linked list, so can't insert at this position");
+        }
+        if (position == 1) {
+            // if position is 1, just move head to point to next
+            head = head.next;
+        } else {
+            // if position is greater than 1, reach to the position first by using a temp variable
+            Node temp = head;
+            for(int i =0; i< position-1; i++) {
+                temp = temp.next;
+            }
+            if (temp != null && temp.next != null) {
+                // removing the node from here
+                temp.next = temp.next.next;
+            }
+        }
+
+
+    }
+
+    // problem : input -> 2 linked list, where digits are stored in reverse order
+    // each node is the linked list represents a digit, and we need to return sum as LL - in reverse order
+
+    public static Node addNumbersOfTwoLL(Node llA, Node llB) {
+        Node l1 = llA;
+        Node l2 = llB;
+        Node res = new Node(-1);
+
+        int carry = 0;
+
+        while(l1 != null || l2 != null) {
+            int x = (l1 != null) ? l1.data: 0;
+            int y = (l2 != null) ? l2.data: 0;
+            int sum = carry + x + y;
+            carry = sum/10;
+            append(sum%10);
+            if(l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+        }
+        if(carry > 0){
+            append(carry);
+        }
+        return head;
+    }
+    public static void append(int data) {
+        if (head == null){
+            head = new Node(data);
+            return;
+        }
+        Node curr = head;
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+        curr.next = new Node(data);
+    }
 }
