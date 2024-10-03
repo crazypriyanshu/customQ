@@ -1,7 +1,10 @@
 package com.qProject.queue.InterviewProblems.streams;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -18,6 +21,15 @@ public class Demo {
 //        }
 //        System.out.println(sum);
         nums.forEach(n -> System.out.println(n));
+
+        // learn functional interface
+        MyFunctionalInterface myFunctionalInterface = s -> {
+            return s+" added with "+s.length()+" length at time: "+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:MM:SS:YYYY:MM"));
+        };
+        System.out.println(myFunctionalInterface.getString("Chaman"));
+
+        List<Integer> myIntegersList = List.of(5, 7, 81, 92, 45);
+
     }
 
 }
