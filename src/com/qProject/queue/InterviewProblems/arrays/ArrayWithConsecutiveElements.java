@@ -21,4 +21,6 @@ public class ArrayWithConsecutiveElements {
                 .reduce((a,b) -> (b-a== 1)?b:Integer.MIN_VALUE)
                 .orElse(Integer.MIN_VALUE != Integer.MIN_VALUE ?1 :0);
     }
+
+
 }

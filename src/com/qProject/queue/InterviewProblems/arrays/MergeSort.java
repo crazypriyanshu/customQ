@@ -23,9 +23,30 @@ public class MergeSort {
         return count%MOD;
     }
 
-//    public static int merge(int[] A, int start, int mid, int end){
-//        int[] left
-//    }
+    public static int merge(int[] A, int start, int mid, int end){
+        int[] sorted = new int[end - start+1];
+        int point1 = start, point2 = end, k=0;
+        int inversionCount = 0;
+        while(point1 <= mid && point2 <= end){
+            if(A[point1] < A[point2]){
+                sorted[k++] = A[point1++];
+            } else {
+                sorted[k++] = A[point2++];
+                inversionCount += (mid - point1+1);
+            }
+        }
+        while (point1 <= mid){
+            sorted[k++] = A[point1++];
+        }
+        while (point2 <= end){
+            sorted[k++] = A[point2++];
+        }
+
+        for (int i=0; i< sorted.length; i++){
+            A[start+i] = sorted[i];
+        }
+        return inversionCount%MOD;
+    }
     public static void main(String[] args) {
 
         int[] A = {1, 3, 2};

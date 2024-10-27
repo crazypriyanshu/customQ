@@ -1,4 +1,7 @@
-package com.qProject.queue.InterviewProblems.designPatterns.templateDesignPattern.BeverageCompany;
+package com.qProject.queue.InterviewProblems.designPatterns.templateDesignPattern.DecoratorDesign;
 
-public class CondimentDecorator {
+public abstract class CondimentDecorator extends Beverage{
+    Beverage beverage;
+    public abstract String getDescription();
+
 }
